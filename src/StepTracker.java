@@ -50,31 +50,6 @@ public class StepTracker {
         int step = inputStep();
         monthToData[month-1].saveStep(day, step);
     }
-   /* int stepsByMonth(int month) { //Метод, сохраняющий сумму шагов за месяц
-        int sum = 0;
-        for (int i = 0; i < 30; i++) {
-            sum = sum + monthToData[month].days[i];
-        }
-        return sum;
-    }
-    void stepsPerDayForMonth(int month) { // Метод, выводящий пройденные шаги за каждый день выбранного месяца
-        for (int i = 0; i < (monthToData[month].days.length - 1); i++) {
-            System.out.print((i + 1) + " день: " + monthToData[month].days[i] + ", ");
-        }
-        System.out.println("30 день: " + monthToData[month].days[29] + ".");
-    }
-    int maxSteps(int month) { // Метод, выводящий максимальное значение шагов за день выбранного месяца
-        int maxnum = monthToData[month].days[0];
-        for (int j = 0; j < monthToData[month].days.length; j++) {
-            if (maxnum <= monthToData[month].days[j]) {
-                maxnum = monthToData[month].days[j];
-            }
-        }
-        return maxnum;
-    }
-    double averageSteps(int month) { // Метод, выводящий среднее значение пройденных шагов за день выбранного месяца
-        return (double) stepsByMonth(month) / monthToData[month].days.length;
-    }*/
     public void changeObject() { // Метод, изменяющий цель по количеству шагов в день
         System.out.println("Введите цель по количеству шагов в сутки");
         while (true) {
@@ -87,22 +62,6 @@ public class StepTracker {
             }
         }
     }
-    /*public int bestSeries(int month) { // Метод, выводящий лучшую серию шагов за выбранный месяц
-        int moreObject = 1; // серия подряд идущих дней, кол-во шагов за которые превышают цель
-        int saveMoreObject = 0; // сохраняет максимальную серию
-        for (int i = 0; i < monthToData[month].days.length - 1; i++) {
-            if (monthToData[month].days[i] >= object && monthToData[month].days[i + 1] >= object) {
-                moreObject = moreObject + 1;
-            } else if (monthToData[month].days[i + 1] < object){
-                if (moreObject > saveMoreObject) {
-                    saveMoreObject = moreObject;
-                    moreObject = 1;
-                }
-
-            }
-        }
-        return saveMoreObject;
-    }*/
     void statistic() {
         int month = inputMonth();
         Converter con = new Converter();
@@ -111,12 +70,6 @@ public class StepTracker {
                             "Пройденная дистанция: %s км; %nКоличество потраченных килокалорий: %s ккал; %nЛучшая серия: %s дней.%n",
                     monthToData[month - 1].stepsByMonth(), monthToData[month - 1].maxSteps(), monthToData[month - 1].averageSteps(),
                     con.distance(monthToData[month - 1].stepsByMonth()), con.calories(monthToData[month - 1].stepsByMonth()), monthToData[month - 1].bestSeries(object));
-
-        /*monthToData[month].stepsPerDayForMonth();
-        monthToData[month].maxSteps();
-        monthToData[month].averageSteps();
-        monthToData[month].stepsByMonth();
-        monthToData[month].bestSeries(object);*/
     }
 
 }
